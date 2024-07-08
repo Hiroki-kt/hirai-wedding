@@ -33,7 +33,7 @@ const getReturnValues = (countDown: any) => {
 }
 
 const CountdownTimer = () => {
-  const [days, hours, minutes, seconds] = useCountdown('2023-10-07T16:00:00')
+  const [days, hours, minutes, seconds] = useCountdown('2024-10-13T16:00:00')
 
   if (days + hours + minutes + seconds <= 0) {
     return <ExpiredNotice />

@@ -23,7 +23,7 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
   const url = `https://api.notion.com/v1/pages/`
   try {
     const body = {
-      parent: { database_id: 'e26e5645b5a94279b7539f12f6c074a9' },
+      parent: { database_id: '6a27503a14744f3786af5f9ee0744d89' },
       properties: format_properties(props),
     }
     console.log(body)

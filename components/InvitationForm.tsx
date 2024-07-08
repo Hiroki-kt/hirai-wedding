@@ -374,7 +374,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
             variant="h6"
             sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
           >
-            苦手な食事があれば入力してください
+            アレルギーがある食材があれば入力してください
           </Typography>
           <Controller
             name="allergies"
@@ -382,20 +382,6 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
             render={({ field }) => (
               <DefaultFormInput
                 placeholder="アレルギー"
-                type="text"
-                value={field.value}
-                onChange={field.onChange}
-                startAdornment={<NoMealsIcon />}
-              />
-            )}
-          />
-
-          <Controller
-            name="dislike"
-            control={control}
-            render={({ field }) => (
-              <DefaultFormInput
-                placeholder="苦手な食材"
                 type="text"
                 value={field.value}
                 onChange={field.onChange}

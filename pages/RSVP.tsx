@@ -15,8 +15,8 @@ const PVSP = () => {
         <div className="mt-3">
           <CommentWithIcon
             type="groom"
-            comment="お手数ではありますが、返信は8/31までにお願いいたします。"
-            img="/hiroki-1.png"
+            comment="お手数ではありますが、返信は8/17までにお願いいたします。"
+            img="/hiroaki.png"
           />
         </div>
         <InvitationForm setStep={setStep} />

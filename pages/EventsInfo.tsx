@@ -16,7 +16,7 @@ const EventsInfo = () => {
             <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
               <div className="mt-5 text-center">
                 <p className="text-2xl text-black font-bold">
-                  2023/10/07 (Sat)
+                  2024/10/13 (Sat)
                 </p>
                 <div className="bg-purple-500 mt-1 h-[2px] w-full"></div>
               </div>
@@ -27,28 +27,28 @@ const EventsInfo = () => {
                 <div className="w-full text-center">
                   <h3 className="text-2xl">受付</h3>
                   <p className="text-xl">
-                    開始時刻: <span className="text-purple-500">15:15</span>
+                    開始時刻: <span className="text-purple-500">14:30</span>
                   </p>
                 </div>
-                <div className="w-full text-center">
+                {/* <div className="w-full text-center">
                   <h3 className="text-2xl">挙式</h3>
                   <p className="text-xl">
                     開始時刻: <span className="text-purple-500">16:15</span>
                   </p>
-                </div>
+                </div> */}
                 {/*  */}
                 <div className="w-full text-center">
                   <h3 className="text-2xl">披露宴</h3>
                   <p className="text-xl">
-                    開始時間: <span className="text-purple-500">17:00</span>
+                    開始時間: <span className="text-purple-500">16:00</span>
                   </p>
                 </div>
               </div>
             </ScrollAnimation>
             <CommentWithIcon
               type="groom"
-              comment="挙式開始の15分前にはお越しください。披露宴の終了予定は、19:30です。"
-              img="/hiroki-1.png"
+              comment="15:15までにはお越しください。披露宴の終了時刻は18:20です。"
+              img="/hiroaki.png"
             />
           </div>
           <div className="md:w-1/2">
@@ -56,16 +56,16 @@ const EventsInfo = () => {
             <SubSectionTitle icon="faCalendarDays" name="Place" />
             <div className="mt-3 text-center">
               <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-                <p className="text-2xl text-black">アンジュールハウス熊本</p>
+                <p className="text-2xl text-black">デュクラス大阪</p>
                 <p>
-                  〒861-8002
+                  〒532-0034
                   <br />
-                  熊本県熊本市北区弓削２丁目１２−１１
+                  大阪府大阪市淀川区野中北１丁目５−３４
                 </p>
               </ScrollAnimation>
               <div className="w-[80%] h-[300px] m-auto mt-[50px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3351.6985306899055!2d130.77509461172983!3d32.853232879976275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3540f0135eb22fd5%3A0x5d8064501baa7a39!2z44Ki44Oz44K444Ol44O844Or44OP44Km44K5!5e0!3m2!1sja!2sjp!4v1687540993790!5m2!1sja!2sjp"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13115.944518675555!2d135.482407!3d34.730744!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e5b67bc4754d%3A0x6eac62519dbf6244!2z44OH44Ol44Kv44Op44K55aSn6Ziq!5e0!3m2!1sja!2sjp!4v1720480609310!5m2!1sja!2sjp"
                   width="100%"
                   height="100%"
                   // style="border:0;"
@@ -77,8 +77,8 @@ const EventsInfo = () => {
             </div>
             <CommentWithIcon
               type="bride"
-              comment="式場はJR豊肥本線 武蔵塚駅から徒歩5分になります。本数はあまり多くありませんので、ご注意ください。"
-              img="/nao-1.png"
+              comment="新大阪駅から直通のバスがありますのでご活用ください。（10分間隔での運行となります。）"
+              img="/haruka.png"
             />
           </div>
         </div>

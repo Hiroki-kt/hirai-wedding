@@ -1,20 +1,20 @@
 {
   "Profile": {
     "Hiroki": {
-      "BirthDay": "1995/11/14",
-      "Country": "熊本県菊池郡",
-      "BradType": "O型",
-      "Myboom": "ダイエット",
+      "BirthDay": "1995/10/13",
+      "Country": "滋賀県湖南市",
+      "BradType": "レモン酎ハイ",
+      "Myboom": "なまけたろう",
       "Comment": "この日のために、ダイエット頑張っています！！皆さんにお会いできるのを楽しみにしています。",
-      "Img": "/hiroki-1.png"
+      "Img": "/hiroaki.png"
     },
     "Nao": {
-      "BirthDay": "1995/06/09",
-      "Country": "熊本県宇城市",
-      "BradType": "O型",
-      "Myboom": "スマホの麻雀ゲーム",
+      "BirthDay": "1996/12/29",
+      "Country": "奈良県大和高田市",
+      "BradType": "ワイン、特にピノノワール",
+      "Myboom": "コウペンちゃん",
       "Comment": "日頃お世話になっている皆さんとお会いできるのを楽しみにしています。当日は沢山語らいましょう。",
-      "Img": "/nao-1.png"
+      "Img": "/haruka.png"
     }
   }
 }
