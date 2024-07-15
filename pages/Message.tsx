@@ -34,11 +34,11 @@ const Message = () => {
         <div className="mt-[40px] flex flex-col md:flex-row">
           {/*  */}
           <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-            <IntroPerson type="groom" name="Hiroki" />
+            <IntroPerson type="groom" name="Hiroaki" />
           </ScrollAnimation>
           {/*  */}
           <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-            <IntroPerson type="bride" name="Nao" />
+            <IntroPerson type="bride" name="Haruka" />
           </ScrollAnimation>
         </div>
       </div>

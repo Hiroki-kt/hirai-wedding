@@ -32,8 +32,10 @@ type Props = {
 
 interface FormValues {
   attend: boolean
-  name: string
-  kana: string
+  firstname: string
+  lastname: string
+  firstname_kana: string
+  lastname_kana: string
   zip_code: number | undefined
   state: string
   city: string
@@ -43,6 +45,7 @@ interface FormValues {
   email: string
   allergies: string
   dislike: string
+  second_party: boolean
   message: string
 }
 
@@ -54,8 +57,10 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
   // }, [router.isReady])
   const [open, setOpen] = useState(false)
   const [attend, setAttend] = useState<number | undefined>(undefined)
+  const [secondParty, setSecondParty] = useState<number | undefined>(undefined)
   const [progress, setProgress] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [agree, setAgree] = useState(false)
 
   const {
     register,
@@ -67,8 +72,10 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
   } = useForm<FormValues>({
     defaultValues: {
       attend: undefined,
-      name: '',
-      kana: '',
+      firstname: '',
+      lastname: '',
+      firstname_kana: '',
+      lastname_kana: '',
       zip_code: undefined,
       state: '',
       city: '',
@@ -78,6 +85,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
       email: '',
       allergies: '',
       dislike: '',
+      second_party: undefined,
       message: '',
     },
   })
@@ -181,46 +189,92 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
           >
             お名前を入力してください
           </Typography>
-          <Controller
-            name="name"
-            control={control}
-            rules={{ required: '名前(漢字)を記述してください。' }}
-            render={({ field }) => (
-              <DefaultFormInput
-                placeholder="お名前 (漢字)"
-                type="text"
-                value={field.value}
-                onChange={field.onChange}
-                startAdornment={<EmojiEmotionsIcon />}
-                error={!!errors.name}
-                helperText={errors.name && errors.name.message}
-              />
-            )}
-          />
-          <Controller
-            name="kana"
-            control={control}
-            rules={{ required: 'かたかなを記述してください。' }}
-            render={({ field }) => (
-              <DefaultFormInput
-                placeholder="かな"
-                type="text"
-                value={field.value}
-                onChange={(e) => {
-                  field.onChange(e)
-                  setProgress(1)
-                }}
-                startAdornment={<EmojiEmotionsIcon />}
-                error={!!errors.kana}
-                helperText={errors.kana && errors.kana.message}
-              />
-            )}
-          />
-        </>
-      )}
+          <Stack
+            direction="row"
+            spacing={2}
+            sx={{ width: '100%', justifyContent: 'space' }}
+          >
+            <Controller
+              name="lastname"
+              control={control}
+              rules={{ required: '姓を入力してください。' }}
+              render={({ field }) => (
+                <DefaultFormInput
+                  placeholder="姓"
+                  type="text"
+                  value={field.value}
+                  onChange={field.onChange}
+                  startAdornment={<EmojiEmotionsIcon />}
+                  error={!!errors.lastname}
+                  helperText={errors.lastname && errors.lastname.message}
+                />
+              )}
+            />
+            <Controller
+              name="firstname"
+              control={control}
+              rules={{ required: '名を入力してください。' }}
+              render={({ field }) => (
+                <DefaultFormInput
+                  placeholder="名"
+                  type="text"
+                  value={field.value}
+                  onChange={field.onChange}
+                  startAdornment={<EmojiEmotionsIcon />}
+                  error={!!errors.firstname}
+                  helperText={errors.firstname && errors.firstname.message}
+                />
+              )}
+            />
+          </Stack>
 
-      {progress >= 1 && (
-        <>
+          <Stack
+            direction="row"
+            spacing={2}
+            sx={{ width: '100%', justifyContent: 'space' }}
+          >
+            <Controller
+              name="lastname_kana"
+              control={control}
+              rules={{ required: '姓のふりがなを記述してください。' }}
+              render={({ field }) => (
+                <DefaultFormInput
+                  placeholder="せい"
+                  type="text"
+                  value={field.value}
+                  onChange={(e) => {
+                    field.onChange(e)
+                  }}
+                  startAdornment={<EmojiEmotionsIcon />}
+                  error={!!errors.lastname_kana}
+                  helperText={
+                    errors.lastname_kana && errors.lastname_kana.message
+                  }
+                />
+              )}
+            />
+            <Controller
+              name="firstname_kana"
+              control={control}
+              rules={{ required: '姓のふりがなを記述してください。' }}
+              render={({ field }) => (
+                <DefaultFormInput
+                  placeholder="めい"
+                  type="text"
+                  value={field.value}
+                  onChange={(e) => {
+                    field.onChange(e)
+                  }}
+                  startAdornment={<EmojiEmotionsIcon />}
+                  error={!!errors.firstname_kana}
+                  helperText={
+                    errors.firstname_kana && errors.firstname_kana.message
+                  }
+                />
+              )}
+            />
+          </Stack>
+
           <Typography
             variant="h6"
             sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
@@ -295,7 +349,6 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
                 value={field.value}
                 onChange={(e) => {
                   field.onChange(e)
-                  setProgress(2)
                 }}
                 startAdornment={<PinDropIcon />}
                 error={!!errors.address}
@@ -317,11 +370,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
               />
             )}
           />
-        </>
-      )}
 
-      {progress >= 2 && (
-        <>
           <Typography
             variant="h6"
             sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
@@ -357,7 +406,6 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
                 value={field.value}
                 onChange={(e) => {
                   field.onChange(e)
-                  setProgress(3)
                 }}
                 startAdornment={<EmailIcon />}
                 error={!!errors.email}
@@ -365,94 +413,159 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
               />
             )}
           />
-        </>
-      )}
-
-      {progress >= 3 && attend === 1 && (
-        <>
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
-          >
-            アレルギーがある食材があれば入力してください
-          </Typography>
-          <Controller
-            name="allergies"
-            control={control}
-            render={({ field }) => (
-              <DefaultFormInput
-                placeholder="アレルギー"
-                type="text"
-                value={field.value}
-                onChange={field.onChange}
-                startAdornment={<NoMealsIcon />}
+          {attend === 1 && (
+            <>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
+              >
+                出席予定の方は、以下の3項目についてお知らせください。
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
+              >
+                1. アレルギーがある食材があれば入力してください
+              </Typography>
+              <Controller
+                name="allergies"
+                control={control}
+                render={({ field }) => (
+                  <DefaultFormInput
+                    placeholder="アレルギー"
+                    type="text"
+                    value={field.value}
+                    onChange={field.onChange}
+                    startAdornment={<NoMealsIcon />}
+                  />
+                )}
               />
-            )}
-          />
-        </>
-      )}
 
-      {progress >= 3 && (
-        <>
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
-          >
-            良ければ、一言メッセージをお願いします。
-          </Typography>
-          <Controller
-            name="message"
-            control={control}
-            render={({ field }) => (
-              <DefaultFormInput
-                placeholder="メッセージ"
-                type="text"
-                value={field.value}
-                onChange={field.onChange}
-                startAdornment={<ChatIcon />}
+              <Typography
+                variant="body1"
+                sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
+              >
+                2.
+                二次会を開催予定です。現在の予定で構いませんので、参加の意思をお知らせください。
+              </Typography>
+              <Controller
+                name="second_party"
+                control={control}
+                // rules={{ required: '出欠を選択してください。' }}
+                render={({ field }) => (
+                  <FormToggleButton
+                    state={field.value}
+                    setAttend={setSecondParty}
+                    onChange={(e) => {
+                      field.onChange(e)
+                      console.log(secondParty)
+                    }}
+                    // error={!!errors.attend}
+                    // helperText={errors.attend && errors.attend.message}
+                  />
+                )}
               />
+
+              <Typography
+                variant="body1"
+                sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
+              >
+                3.
+                公式LINEアカウントにて、リマインドやお知らせを行います。ぜひ、下記のリンクから友達追加をお願いします。
+              </Typography>
+              <a
+                href="https://lin.ee/WJjoDxF"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-10 py-3 border-2 border-green-500 rounded-lg text-white bg-green-400 hover:bg-green-600 mb-10"
+              >
+                LINE友達追加
+              </a>
+            </>
+          )}
+          <>
+            <Typography
+              variant="h6"
+              sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
+            >
+              新郎・新婦へ一言メッセージをお願いします。
+            </Typography>
+            <Controller
+              name="message"
+              control={control}
+              render={({ field }) => (
+                <DefaultFormInput
+                  placeholder="メッセージ"
+                  type="text"
+                  value={field.value}
+                  onChange={field.onChange}
+                  startAdornment={<ChatIcon />}
+                />
+              )}
+            />
+
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 700,
+                color: '#504C74',
+                marginTop: '40px',
+                marginBottom: '20px',
+              }}
+            >
+              ※ 確認画面は出ません <br />
+              一度確認いただきまして、問題なければチェックを入れて送信してください。
+            </Typography>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Checkbox
+                checked={agree}
+                onChange={() => setAgree(!agree)}
+                sx={{ color: '#504C74' }}
+              />
+              <Typography
+                variant="body1"
+                sx={{ fontWeight: 700, color: '#504C74' }}
+              >
+                上記の内容で送信します。
+              </Typography>
+            </Stack>
+
+            <Button
+              variant="contained"
+              type="submit"
+              onClick={handleSubmit(sendForm)}
+              disabled={isLoading || agree === false}
+              sx={{
+                width: '100%',
+                height: '65px',
+                fontSize: '20px',
+                borderRadius: '10px',
+                fontWeight: 'bold',
+              }}
+            >
+              {isLoading ? '送信中...' : '送信'}
+            </Button>
+            {!isValid && (
+              <div className="text-red-600 mt-2">未入力の項目があります。</div>
             )}
-          />
-
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: 700,
-              color: '#504C74',
-              marginTop: '40px',
-              marginBottom: '20px',
-            }}
-          >
-            確認画面出ませんので、よろしければ送信ボタンを押してください。
-          </Typography>
-
-          <Button
-            variant="contained"
-            type="submit"
-            onClick={handleSubmit(sendForm)}
-            disabled={isLoading}
-            sx={{
-              width: '100%',
-              height: '65px',
-              fontSize: '20px',
-              borderRadius: '10px',
-              fontWeight: 'bold',
-            }}
-          >
-            {isLoading ? '送信中...' : '送信'}
-          </Button>
-          {!isValid && (
-            <div className="text-red-600 mt-2">未入力の項目があります。</div>
-          )}
-          {errors.zip_code && (
-            <div className="text-red-600 mt-2">
-              郵便番号部分がおかしいです。
-              <br />
-              7桁の数字で入力してください。
-              <br />
-              例：〒8600001
-            </div>
-          )}
+            {errors.zip_code && (
+              <div className="text-red-600 mt-2">
+                郵便番号部分がおかしいです。
+                <br />
+                7桁の数字で入力してください。
+                <br />
+                例：〒8600001
+              </div>
+            )}
+          </>
         </>
       )}
     </Stack>

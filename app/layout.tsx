@@ -3,9 +3,9 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const siteName = 'Wedding Invitation by Hiroki & Nao'
+const siteName = 'Wedding Invitation by Hiroaki & Haruka'
 const description =
-  'Hiroki & Nao Wedding Invitation. 2023/10/07 16:15開始. 皆さんのご参加をお待ちしております！'
+  'Hiroaki & Haruka Wedding Invitation. 2024/10/17 16:15開始. 皆さんのご参加をお待ちしております！'
 const url = 'https://ktym19.com'
 
 export const metadata = {

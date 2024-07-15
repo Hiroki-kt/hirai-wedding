@@ -2,8 +2,10 @@ import { format, resolve } from 'path'
 import type { NextApiRequest, NextApiResponse } from 'next'
 class FormProps {
   attend?: boolean
-  name?: string
-  kana?: string
+  lastname?: string
+  firstname?: string
+  lastname_kana?: string
+  firstname_kana?: string
   zip_code?: number
   state?: string
   city?: string
@@ -14,6 +16,7 @@ class FormProps {
   allergies?: string
   dislike?: string
   message?: string
+  second_party?: boolean
 }
 
 export default async function POST(req: NextApiRequest, res: NextApiResponse) {
@@ -60,11 +63,11 @@ const format_properties = (props: FormProps) => {
   return {
     Name: {
       type: 'title',
-      title: format_text(props.name),
+      title: format_text(props.lastname + ' ' + props.firstname),
     },
     Kana: {
       type: 'rich_text',
-      rich_text: format_text(props.kana),
+      rich_text: format_text(props.lastname_kana + ' ' + props.firstname_kana),
     },
     ZipCode: {
       type: 'number',
@@ -109,6 +112,10 @@ const format_properties = (props: FormProps) => {
     Attend: {
       type: 'checkbox',
       checkbox: props.attend,
+    },
+    SecondParty: {
+      type: 'checkbox',
+      checkbox: props.second_party,
     },
   }
 }
