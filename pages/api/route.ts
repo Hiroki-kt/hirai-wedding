@@ -17,6 +17,7 @@ class FormProps {
   dislike?: string
   message?: string
   second_party?: boolean
+  is_line_add?: string
 }
 
 export default async function POST(req: NextApiRequest, res: NextApiResponse) {
@@ -116,6 +117,12 @@ const format_properties = (props: FormProps) => {
     SecondParty: {
       type: 'checkbox',
       checkbox: props.second_party,
+    },
+    isLineAdd: {
+      type: 'select',
+      select: {
+        name: props.is_line_add,
+      },
     },
   }
 }

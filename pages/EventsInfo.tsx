@@ -6,7 +6,7 @@ import ScrollAnimation from 'react-animate-on-scroll'
 const EventsInfo = () => {
   return (
     <div className="w-full bg-gray-100">
-      <div className="w-[80%] m-auto py-5">
+      <div className="w-[90%] m-auto py-5">
         {/* Title */}
         <SectionTitle icon="faCalendarDays" name="EventsInfo" />
         <div className="md:flex">

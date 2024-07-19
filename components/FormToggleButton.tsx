@@ -4,12 +4,13 @@ type Props = {
   state: boolean
   onChange: (value: boolean) => void
   setAttend: (value: number) => void
+  titleList: string[]
   error?: boolean
   helperText?: string
 }
 
 const FormToggleButton = (props: Props) => {
-  const { state, onChange, setAttend, error, helperText } = props
+  const { state, onChange, setAttend, titleList, error, helperText } = props
   const onClickTrue = () => {
     onChange(true)
     setAttend(1)
@@ -28,27 +29,27 @@ const FormToggleButton = (props: Props) => {
             type="button"
             className={
               'inline-flex h-16 w-64 items-center justify-center rounded-lg border ' +
-              (!state && state !== undefined
+              (state
                 ? 'bg-[#1976d2] border-[#1976d2] text-white'
                 : 'bg-none text-[#777777] border-[#777777]')
             }
-            onClick={onClickFalse}
+            onClick={onClickTrue}
           >
             {/* <AiOutlineCheck className={state ? 'inline-block' : 'hidden'} /> */}
-            欠席
+            {titleList[0]}
           </button>
           <button
             type="button"
             className={
               'inline-flex h-16 w-64 items-center justify-center rounded-lg border ' +
-              (state
+              (!state && state !== undefined
                 ? 'bg-[#1976d2] border-#1976d2] text-white'
                 : 'bg-none text-[#777777] border-[#777777]')
             }
-            onClick={onClickTrue}
+            onClick={onClickFalse}
           >
             {/* <AiOutlineCheck className={!state ? 'inline-block' : 'hidden'} /> */}
-            出席
+            {titleList[1]}
           </button>
         </div>
         {error && (

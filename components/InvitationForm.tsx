@@ -1,14 +1,4 @@
-import {
-  Stack,
-  FormControl,
-  FormHelperText,
-  FormControlLabel,
-  Checkbox,
-  Button,
-  Typography,
-  Box,
-  Link,
-} from '@mui/material'
+import { Stack, Checkbox, Button, Typography } from '@mui/material'
 
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions'
 import EmailIcon from '@mui/icons-material/Email'
@@ -25,6 +15,7 @@ import { FC, useEffect, useState } from 'react'
 import DefaultFormInput from './DefaultFormInput'
 import FormToggleButton from '@/FormToggleButton'
 import FullScreenDialog from '@/FormCompleteDialog'
+import FormRadioButton from '@/FormRadioButton'
 
 type Props = {
   setStep: React.Dispatch<React.SetStateAction<0 | 1 | 2>>
@@ -47,6 +38,7 @@ interface FormValues {
   dislike: string
   second_party: boolean
   message: string
+  is_line_add: string
 }
 
 const InvitationForm: FC<Props> = ({ setStep }) => {
@@ -160,7 +152,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
         variant="h6"
         sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
       >
-        出欠を選択してください。
+        ご出欠を選択してください。
       </Typography>
 
       <Controller
@@ -175,6 +167,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
               field.onChange(e)
               console.log(attend)
             }}
+            titleList={['ご出席', 'ご欠席']}
             // error={!!errors.attend}
             // helperText={errors.attend && errors.attend.message}
           />
@@ -187,7 +180,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
             variant="h6"
             sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
           >
-            お名前を入力してください
+            ご芳名を入力してください
           </Typography>
           <Stack
             direction="row"
@@ -279,7 +272,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
             variant="h6"
             sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
           >
-            住所を入力してください
+            ご住所を入力してください
           </Typography>
 
           <Controller
@@ -375,7 +368,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
             variant="h6"
             sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
           >
-            連作先を入力してください
+            ご連作先を入力してください
           </Typography>
 
           <Controller
@@ -413,6 +406,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
               />
             )}
           />
+
           {attend === 1 && (
             <>
               <Typography
@@ -421,72 +415,119 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
               >
                 出席予定の方は、以下の3項目についてお知らせください。
               </Typography>
-              <Typography
-                variant="body1"
-                sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
-              >
-                1. アレルギーがある食材があれば入力してください
-              </Typography>
-              <Controller
-                name="allergies"
-                control={control}
-                render={({ field }) => (
-                  <DefaultFormInput
-                    placeholder="アレルギー"
-                    type="text"
-                    value={field.value}
-                    onChange={field.onChange}
-                    startAdornment={<NoMealsIcon />}
-                  />
-                )}
-              />
 
-              <Typography
-                variant="body1"
-                sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
-              >
-                2.
-                二次会を開催予定です。現在の予定で構いませんので、参加の意思をお知らせください。
-              </Typography>
-              <Controller
-                name="second_party"
-                control={control}
-                // rules={{ required: '出欠を選択してください。' }}
-                render={({ field }) => (
-                  <FormToggleButton
-                    state={field.value}
-                    setAttend={setSecondParty}
-                    onChange={(e) => {
-                      field.onChange(e)
-                      console.log(secondParty)
+              <Stack className="w-full bg-yellow-50">
+                <div className="w-[90%] m-auto py-5 flex flex-col items-start">
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontWeight: 700,
+                      color: '#504C74',
+                      marginBottom: '20px',
                     }}
-                    // error={!!errors.attend}
-                    // helperText={errors.attend && errors.attend.message}
+                  >
+                    1. アレルギーがある食材があれば入力してください
+                  </Typography>
+                  <Controller
+                    name="allergies"
+                    control={control}
+                    render={({ field }) => (
+                      <DefaultFormInput
+                        placeholder="アレルギー"
+                        type="text"
+                        value={field.value}
+                        onChange={field.onChange}
+                        startAdornment={<NoMealsIcon />}
+                      />
+                    )}
                   />
-                )}
-              />
 
-              <Typography
-                variant="body1"
-                sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
-              >
-                3.
-                公式LINEアカウントにて、リマインドやお知らせを行います。ぜひ、下記のリンクから友達追加をお願いします。
-              </Typography>
-              <a
-                href="https://lin.ee/WJjoDxF"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-10 py-3 border-2 border-green-500 rounded-lg text-white bg-green-400 hover:bg-green-600 mb-10"
-              >
-                LINE友達追加
-              </a>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontWeight: 700,
+                      color: '#504C74',
+                      marginBottom: '20px',
+                    }}
+                  >
+                    2. 二次会を開催予定です。ご参加の意思をお知らせください。
+                  </Typography>
+                  <Controller
+                    name="second_party"
+                    control={control}
+                    // rules={{ required: '出欠を選択してください。' }}
+                    render={({ field }) => (
+                      <FormToggleButton
+                        state={field.value}
+                        setAttend={setSecondParty}
+                        onChange={(e) => {
+                          field.onChange(e)
+                          console.log(secondParty)
+                        }}
+                        titleList={['ご参加予定', 'ご参加予定なし']}
+                        // error={!!errors.attend}
+                        // helperText={errors.attend && errors.attend.message}
+                      />
+                    )}
+                  />
+
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontWeight: 700,
+                      color: '#504C74',
+                      marginBottom: '20px',
+                    }}
+                  >
+                    公式LINEアカウントにて、リマインドやお知らせを行います。ぜひ、下記のリンクから友達追加をお願いします。
+                  </Typography>
+                  <a
+                    href="https://lin.ee/WJjoDxF"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-10 py-3 border-2 border-green-500 rounded-lg text-white bg-green-400 hover:bg-green-600 mb-10"
+                  >
+                    LINE友達追加
+                  </a>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontWeight: 700,
+                      color: '#504C74',
+                      marginBottom: '20px',
+                    }}
+                  >
+                    3.上記公式ラインの登録の状況をお知らせください。
+                  </Typography>
+                  <Controller
+                    name="is_line_add"
+                    control={control}
+                    render={({ field }) => (
+                      <FormRadioButton
+                        state={field.value}
+                        onChange={(e) => {
+                          field.onChange(e)
+                          console.log('change is line add')
+                        }}
+                        selectedList={['登録済み', '登録予定', '登録しない']}
+                        // error={!!errors.attend}
+                        // helperText={errors.attend && errors.attend.message}
+                      />
+                    )}
+                  />
+                </div>
+              </Stack>
             </>
           )}
           <>
             <Typography
               variant="h6"
-              sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
+              sx={{
+                fontWeight: 700,
+                color: '#504C74',
+                marginBottom: '20px',
+                marginTop: '20px',
+              }}
             >
               新郎・新婦へ一言メッセージをお願いします。
             </Typography>
@@ -508,7 +549,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
               variant="h6"
               sx={{
                 fontWeight: 700,
-                color: '#504C74',
+                color: 'orange',
                 marginTop: '40px',
                 marginBottom: '20px',
               }}

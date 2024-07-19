@@ -57,11 +57,17 @@ const FullScreenDialog = (props: DialogProps) => {
         </DialogTitle>
         <DialogContent>
           <div className="w-full h-full flex flex-col items-center justify-center">
-            <img src="/two.png" alt="" />
-            <div className="text-center">御回答ありがとうございました</div>
+            <div className="h-2/3">
+              <img
+                src="/two.png"
+                alt=""
+                className="w-fill h-full object-contain"
+              />
+            </div>
+            <div className="text-center">ご回答ありがとうございました</div>
             {attend ? (
               <div className="text-center">
-                結婚式でお会いできることを楽しみにしています！！！
+                披露宴でお会いできることを楽しみにしています！！！
               </div>
             ) : (
               <div className="text-center">

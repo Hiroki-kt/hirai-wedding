@@ -8,7 +8,7 @@ const PVSP = () => {
   const [step, setStep] = useState<0 | 1 | 2>(0)
   return (
     <div className="w-full bg-gray-100">
-      <div className="w-[80%] m-auto py-5 md:w-1/2">
+      <div className="w-[90%] m-auto py-5 md:w-1/2">
         {/* Title */}
         <SectionTitle icon="faClipboardUser" name="RSVP" />
         {/* Contents1 */}
