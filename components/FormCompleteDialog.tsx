@@ -1,4 +1,6 @@
 import * as React from 'react'
+import Image from 'next/image'
+
 import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
@@ -57,13 +59,7 @@ const FullScreenDialog = (props: DialogProps) => {
         </DialogTitle>
         <DialogContent>
           <div className="w-full h-full flex flex-col items-center justify-center">
-            <div className="h-2/3">
-              <img
-                src="/two.png"
-                alt=""
-                className="w-fill h-full object-contain"
-              />
-            </div>
+            <Image src="/two.png" alt="aa" width={500} height={500} />
             <div className="text-center">ご回答ありがとうございました</div>
             {attend ? (
               <div className="text-center">

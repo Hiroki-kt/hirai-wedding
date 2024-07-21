@@ -33,13 +33,17 @@ const Message = () => {
         {/* Contents2 */}
         <div className="mt-[40px] flex flex-col md:flex-row">
           {/*  */}
-          <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-            <IntroPerson type="groom" name="Hiroaki" />
-          </ScrollAnimation>
+          <div className="w-full md:w-1/2">
+            <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
+              <IntroPerson type="groom" name="Hiroaki" />
+            </ScrollAnimation>
+          </div>
           {/*  */}
-          <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-            <IntroPerson type="bride" name="Haruka" />
-          </ScrollAnimation>
+          <div className="w-full md:w-1/2">
+            <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
+              <IntroPerson type="bride" name="Haruka" />
+            </ScrollAnimation>
+          </div>
         </div>
       </div>
     </div>

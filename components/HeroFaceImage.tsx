@@ -1,6 +1,8 @@
+import Image from 'next/image'
 import ScrollAnimation from 'react-animate-on-scroll'
+
 class HeroFaceImageProps {
-  heroFace?: string
+  heroFace = ''
   type?: string
   name?: string
 }
@@ -9,10 +11,12 @@ const HeroFaceImage = (props: HeroFaceImageProps) => {
   const color = props.type === 'Groom' ? 'text-blue-500' : 'text-pink-500'
   return (
     <div className="w-4/5 flex m-auto">
-      <div className="w-1/2">
-        <img
+      <div className="w-1/2 animate__animated animate__shakeX">
+        <Image
           src={props.heroFace}
-          className="w-full h-full object-contain animate__animated animate__shakeX"
+          width={500}
+          height={500}
+          alt="Hero Face image"
         />
       </div>
       <div className="w-1/2 relative flex justify-center items-center md:justify-start">

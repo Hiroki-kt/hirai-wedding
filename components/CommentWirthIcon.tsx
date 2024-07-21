@@ -1,7 +1,9 @@
+import Image from 'next/image'
+
 class CommentWithIconProps {
   type?: string
   comment?: string
-  img?: string
+  img = ''
 }
 
 const CommentWithIcon = (props: CommentWithIconProps) => {
@@ -12,7 +14,7 @@ const CommentWithIcon = (props: CommentWithIconProps) => {
         <p className="text-[18px] text-black xl:p-3">{props.comment}</p>
       </div>
       <div className="w-1/3 max-w-xs">
-        <img src={props.img} className="w-full h-full object-contain" />
+        <Image src={props.img} width={500} height={500} alt="Icon image" />
       </div>
     </div>
   )
