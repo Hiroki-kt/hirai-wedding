@@ -103,10 +103,6 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
     }
   }
 
-  const handleDialogClose = () => {
-    setOpen(false)
-  }
-
   const updateZipcodeSub = () => {
     const zip_code = getValues('zip_code')
     console.log(zip_code)

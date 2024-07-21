@@ -116,12 +116,12 @@ const format_properties = (props: FormProps) => {
     },
     SecondParty: {
       type: 'checkbox',
-      checkbox: props.second_party,
+      checkbox: props.second_party || false,
     },
     isLineAdd: {
       type: 'select',
       select: {
-        name: props.is_line_add,
+        name: props.is_line_add || '未登録',
       },
     },
   }
