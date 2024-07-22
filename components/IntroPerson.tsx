@@ -23,7 +23,7 @@ const IntroPerson = (props: IntroPersonProps) => {
         <li>{person.BirthDay} 生まれ</li>
         <li>{person.Country} 出身</li>
         <li>{person.BradType}</li>
-        <li>マイブーム：{person.Myboom}</li>
+        <li>好きなお酒：{person.Myboom}</li>
       </ul>
       <CommentWithIcon
         type={props.type}

@@ -10,12 +10,12 @@ const PVSP = () => {
     <div className="w-full bg-gray-100">
       <div className="w-[90%] m-auto py-5 md:w-1/2">
         {/* Title */}
-        <SectionTitle icon="faClipboardUser" name="RSVP" />
+        <SectionTitle icon="faClipboardUser" name="INVITATION" />
         {/* Contents1 */}
         <div className="mt-3">
           <CommentWithIcon
             type="groom"
-            comment="お手数ではありますが、返信は8/17までにお願いいたします。"
+            comment="お手数ではありますが、返信は8/29までにお願いいたします。"
             img="/hiroaki.png"
           />
         </div>

@@ -364,7 +364,7 @@ const InvitationForm: FC<Props> = ({ setStep }) => {
             variant="h6"
             sx={{ fontWeight: 700, color: '#504C74', marginBottom: '20px' }}
           >
-            ご連作先を入力してください
+            ご連絡先を入力してください
           </Typography>
 
           <Controller
