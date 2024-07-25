@@ -16,7 +16,7 @@ const EventsInfo = () => {
             <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
               <div className="mt-5 text-center">
                 <p className="text-2xl text-black font-bold">
-                  2024/10/13 (Sat)
+                  2024/10/13 (Sun)
                 </p>
                 <div className="bg-purple-500 mt-1 h-[2px] w-full"></div>
               </div>

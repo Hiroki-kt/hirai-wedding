@@ -22,8 +22,8 @@ const IntroPerson = (props: IntroPersonProps) => {
       <ul className="w-[90%] mt-2">
         <li>{person.BirthDay} 生まれ</li>
         <li>{person.Country} 出身</li>
-        <li>{person.BradType}</li>
-        <li>好きなお酒：{person.Myboom}</li>
+        <li>好きなお酒：{person.BradType}</li>
+        <li>好きなキャラクター：{person.Myboom}</li>
       </ul>
       <CommentWithIcon
         type={props.type}
