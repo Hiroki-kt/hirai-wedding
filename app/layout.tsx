@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 const siteName = 'Wedding Invitation by Hiroaki & Haruka'
 const description =
-  'Hiroaki & Haruka Wedding Invitation. 2024/10/17 16:15開始. 皆さんのご参加をお待ちしております！'
+  'Hiroaki & Haruka Wedding Invitation. 2024/10/13 16:00開始. 皆さんのご参加をお待ちしております！'
 const url = 'https://haruka-hirokun-love.love'
 
 export const metadata = {
